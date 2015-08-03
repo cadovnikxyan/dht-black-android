@@ -20,11 +20,9 @@ static int failcounter = 0;
 
 void dht::dht_request_data()
 {
-
 	int fd=open("/sys/kernel/debug/irq-dht", O_WRONLY);
 	sprintf(buf, "%d %u", DHT_GPIO, getpid()); // gpio-dht-handler kernel module
 	write(fd, buf, strlen(buf) + 1);
-	std::cout<<"dht";
 	close(fd);
 }
 
@@ -34,7 +32,7 @@ void dht::dht_request_data()
 
  void dht::dht_handler(int n, siginfo_t *info, void *unused)
 {
-	 dht wer;
+	dht wer;
 	if (info->si_int == 0) // DHT protocol CRC error
 	{
 		if (++failcounter > 10)
@@ -47,6 +45,7 @@ void dht::dht_request_data()
 		wer.dht_request_data();
 		return;
 	}
+
     socket_tcp sock;
     int socket_num=sock.socket_open();
 	float humidity = (float)((info->si_int) >> 16)/10.0; // 2xMSB
@@ -128,8 +127,8 @@ bool dht::init_handler(int timer, int tick, unsigned int timeout)
 bool dht::remove_handler(int timer)
 {
 	int fd;
-
 	fd = open("/sys/kernel/debug/timer-irq", O_WRONLY);
+
 	if(fd < 0)
 	{
 		perror("open");
@@ -137,7 +136,6 @@ bool dht::remove_handler(int timer)
 	}
 
 	sprintf(buf, "- %d", timer);
-
 	if(write(fd, buf, strlen(buf) + 1) < 0)
 	{
 		perror("write");
