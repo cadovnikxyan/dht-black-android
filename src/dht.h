@@ -7,9 +7,6 @@
 
 #ifndef DHT_H_
 #define DHT_H_
-#include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -21,6 +18,8 @@
 #include <time.h>
 #include "socket_tcp.h"
 #include <string>
+#include "rwfile.h"
+
 #define SIG_TIMER_IRQ	43
 #define SIG_DHT_IRQ		44
 #define TIMER_TIMER 1
@@ -38,12 +37,6 @@ bool remove_handler(int timer);
 bool init_handler(int timer, int tick, unsigned int timeout);
 static void irq_handler(int n, siginfo_t *info, void *unused);
 static void dht_handler(int n, siginfo_t *info, void *unused);
-
-private:
-
-// #define EXT_60M_CMD ""
-
-
 
 };
 

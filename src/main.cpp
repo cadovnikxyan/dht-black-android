@@ -1,16 +1,18 @@
 
 #include "dht.h"
 
-int main()
+int main(int argc, char* argv[])
 
 {
-	std::cout<< "start"<<std::endl;
-	int timer = TIMER_TIMER;
-	int tick = 1000*1000; // 1 sec
-	unsigned int timeout = 1000*1000*2; // 60 sec
-
 
 	dht weather;
+	string str;
+
+	std::cout<< "start"<<std::endl;
+
+	int timer = TIMER_TIMER;
+	int tick = 1000*1000; // 1 sec
+	unsigned int timeout = 1000*1000*2; // 2 sec
 	sigset_t sigset;
 	siginfo_t siginfo;
 
@@ -30,9 +32,11 @@ int main()
 			std::cout<<"Error initializing timer"<<std::endl;
 			return -1;
 		}
+
 	while (1)
 	{
 		sigwaitinfo(&sigset, &siginfo);
+
 		if(siginfo.si_signo == SIGINT)
 		{
 			break;
@@ -40,7 +44,6 @@ int main()
 	}
 
 	weather.remove_handler(timer);
-
 
 	return 0;
 }

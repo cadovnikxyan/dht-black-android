@@ -6,16 +6,19 @@
 CPP_SRCS += \
 ../src/dht.cpp \
 ../src/main.cpp \
+../src/rwfile.cpp \
 ../src/socket.cpp 
 
 OBJS += \
 ./src/dht.o \
 ./src/main.o \
+./src/rwfile.o \
 ./src/socket.o 
 
 CPP_DEPS += \
 ./src/dht.d \
 ./src/main.d \
+./src/rwfile.d \
 ./src/socket.d 
 
 

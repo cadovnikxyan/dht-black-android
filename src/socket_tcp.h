@@ -27,7 +27,7 @@ class socket_tcp {
 public:
 	socket_tcp();
 	~socket_tcp();
-	int socket_open();
+	int socket_open(const char* ip_host);
 	void socket_write(int socketHandle, string m_data);
 
 private:

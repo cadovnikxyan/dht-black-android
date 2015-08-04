@@ -17,19 +17,19 @@ socket_tcp::~socket_tcp() {
 }
 
 
-int socket_tcp::socket_open()
+int socket_tcp::socket_open(const char* ip_host)
 {
    int socketHandle;
    struct sockaddr_in remoteSocketInfo;
    struct hostent *hPtr;
 
-   const char *remoteHost="192.168.0.119";
+   const char *remoteHost=ip_host;
    int portNumber = 33333;
 
-   bzero(&remoteSocketInfo, sizeof(sockaddr_in));  // Clear structure memory
+   bzero(&remoteSocketInfo, sizeof(sockaddr_in));  //очищение памяти
 
-   // Get system information
 
+//проверка хоста
    if((hPtr = gethostbyname(remoteHost)) == NULL)
    {
       cerr << "System DNS name resolution not configured properly." << endl;
@@ -37,18 +37,18 @@ int socket_tcp::socket_open()
       exit(EXIT_FAILURE);
    }
 
-   // create socket
+   // создание сокета
 
    if((socketHandle = socket(AF_INET, SOCK_STREAM, 0)) < 0)
    {
       exit(EXIT_FAILURE);
    }
 
-   // Load system information into socket data structures
+   // загрузка информации о системе в сокет
 
    memcpy((char *)&remoteSocketInfo.sin_addr, hPtr->h_addr, hPtr->h_length);
    remoteSocketInfo.sin_family = AF_INET;
-   remoteSocketInfo.sin_port = htons((u_short)portNumber);      // Set port number
+   remoteSocketInfo.sin_port = htons((u_short)portNumber);      // номер порта
 
    if(connect(socketHandle, (struct sockaddr *)&remoteSocketInfo, sizeof(sockaddr_in)) < 0)
    {
