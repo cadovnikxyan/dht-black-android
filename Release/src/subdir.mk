@@ -26,21 +26,7 @@ CPP_DEPS += \
 src/%.o: ../src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross G++ Compiler'
-	mips-openwrt-linux-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
-	@echo 'Finished building: $<'
-	@echo ' '
-
-src/main.o: ../src/main.cpp
-	@echo 'Building file: $<'
-	@echo 'Invoking: Cross G++ Compiler'
-	mips-openwrt-linux-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"src/main.d" -o "$@" "$<"
-	@echo 'Finished building: $<'
-	@echo ' '
-
-src/socket.o: ../src/socket.cpp
-	@echo 'Building file: $<'
-	@echo 'Invoking: Cross G++ Compiler'
-	mips-openwrt-linux-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"src/socket.d" -o "$@" "$<"
+	mips-openwrt-linux-g++ -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

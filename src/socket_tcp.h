@@ -29,8 +29,9 @@ public:
 	~socket_tcp();
 	int socket_open(const char* ip_host);
 	void socket_write(int socketHandle, string m_data);
-
+	bool isOpen();
 private:
+	bool socketHandleFlag;
 
 };
 

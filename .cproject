@@ -18,7 +18,7 @@
 					<folderInfo id="cdt.managedbuild.config.gnu.cross.exe.debug.2060781965." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.cross.exe.debug.860529609" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.exe.debug">
 							<option id="cdt.managedbuild.option.gnu.cross.prefix.1817932653" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" value="mips-openwrt-linux-" valueType="string"/>
-							<option id="cdt.managedbuild.option.gnu.cross.path.1851795035" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" value="/home/alexey/openwrt/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/" valueType="string"/>
+							<option id="cdt.managedbuild.option.gnu.cross.path.1851795035" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" value="/home/alexey/OpenWrt-Toolchain-ar71xx-for-mips_34kc-gcc-4.8-linaro_uClibc-0.9.33.2/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/" valueType="string"/>
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.57462299" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
 							<builder buildPath="${workspace_loc:/socket_test}/Debug" id="cdt.managedbuild.builder.gnu.cross.1785009633" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.561152597" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">

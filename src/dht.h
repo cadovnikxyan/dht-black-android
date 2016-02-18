@@ -24,7 +24,7 @@
 #define SIG_DHT_IRQ		44
 #define TIMER_TIMER 1
 #define DHT_TIMER 2
-#define DHT_GPIO 23
+#define DHT_GPIO 26
 
 
 class dht {
@@ -32,12 +32,13 @@ public:
 	dht();
 	~dht();
 
-void dht_request_data();
-bool remove_handler(int timer);
-bool init_handler(int timer, int tick, unsigned int timeout);
-static void irq_handler(int n, siginfo_t *info, void *unused);
-static void dht_handler(int n, siginfo_t *info, void *unused);
-
+	void dht_request_data();
+	bool remove_handler(int timer);
+	bool init_handler(int timer, int tick, unsigned int timeout);
+	static void irq_handler(int n, siginfo_t *info, void *unused);
+	static void dht_handler(int n, siginfo_t *info, void *unused);
+private:
+	static int sock_number;
 };
 
 #endif /* DHT_H_ */

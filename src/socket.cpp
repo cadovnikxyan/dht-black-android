@@ -7,7 +7,7 @@
 
 #include "socket_tcp.h"
 
-socket_tcp::socket_tcp() {
+socket_tcp::socket_tcp():socketHandleFlag(false) {
 
 
 }
@@ -15,6 +15,7 @@ socket_tcp::socket_tcp() {
 socket_tcp::~socket_tcp() {
 
 }
+
 
 
 int socket_tcp::socket_open(const char* ip_host)
@@ -55,10 +56,14 @@ int socket_tcp::socket_open(const char* ip_host)
       exit(EXIT_FAILURE);
    }
 
+   	   socketHandleFlag=true;
+
    return socketHandle;
 
+}
 
-
+bool  socket_tcp::isOpen(){
+	return socketHandleFlag;
 }
 
 void socket_tcp::socket_write(int socketHandle, string m_data)

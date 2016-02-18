@@ -15,7 +15,7 @@ dht::~dht() {
 
 }
 
-
+int dht::sock_number=0;
 static char buf[512];
 static unsigned int counter = 0;
 static int failcounter = 0;
@@ -58,7 +58,10 @@ void dht::dht_request_data()
 	m_str_buf[0]=buffer;
 	m_str_buf[1]=buffer1;
 	m_str_buf[2]=m_str_buf[0]+"|"+m_str_buf[1]+"\n";
-	int sock_number=sock.socket_open("192.168.0.119");
+
+	if(!sock.isOpen()){
+		sock_number=sock.socket_open("192.168.0.119");
+	}
 	sock.socket_write(sock_number,m_str_buf[2]);
 	rw.write_file("/root/dht_data.txt",m_str_buf[2].c_str());
 
